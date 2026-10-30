@@ -187,13 +187,16 @@ function piCard(){
   ];
   if (p.office) out.push(el("p", {className:"contact", textContent:"居室: " + p.office}));
   if (p.tel) out.push(el("p", {className:"contact", textContent:"電話: " + p.tel}));
-  if (p.email) {
+    if (p.email) {
     const address = p.email.replace(/\s*\[at\]\s*/i, "@");
     out.push(el("p", {className:"contact"}, [
       "E-mail: ",
       el("a", {href:"mailto:" + address, textContent:address})
     ]));
   }
+
+  return out;
+}
 
 $("brand").textContent = LAB.nameJa;
 $("h-name").textContent = LAB.nameJa;
