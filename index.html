@@ -185,11 +185,15 @@ function piCard(){
     el("p",{className:"nm",textContent:p.name+" "+p.title}),
     el("p",{className:"role",textContent:p.nameEn})
   ];
-  if(p.office) out.push(el("p",{className:"contact",textContent:"居室: "+p.office}));
-  if(p.tel)    out.push(el("p",{className:"contact",textContent:"電話: "+p.tel}));
-  if(p.email)  const addr = p.email.replace(" [at] ","@"); out.push(el("p",{className:"contact"},["E-mail: ", el("a",{href:"mailto:"+p.email,textContent:p.email})]));
-  return out;
-}
+  if (p.office) out.push(el("p", {className:"contact", textContent:"居室: " + p.office}));
+  if (p.tel) out.push(el("p", {className:"contact", textContent:"電話: " + p.tel}));
+  if (p.email) {
+    const address = p.email.replace(/\s*\[at\]\s*/i, "@");
+    out.push(el("p", {className:"contact"}, [
+      "E-mail: ",
+      el("a", {href:"mailto:" + address, textContent:address})
+    ]));
+  }
 
 $("brand").textContent = LAB.nameJa;
 $("h-name").textContent = LAB.nameJa;
